@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "_Layout";
+
+    var current = ViewContext.RouteData.Values["controller"]?.ToString();
+}
+
+ 
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

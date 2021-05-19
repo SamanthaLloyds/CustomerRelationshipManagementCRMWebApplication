@@ -1,0 +1,94 @@
+﻿@model IEnumerable<CooperativeFuneralFundInc.Models.SupplyRequest.SupplyRequest>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>All Requests</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderItems)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupplyRequestOrigin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RequestType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Owner)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderItems)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupplyRequestOrigin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequestType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Owner)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedTime)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SupplyRequestId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SupplyRequestId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SupplyRequestId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

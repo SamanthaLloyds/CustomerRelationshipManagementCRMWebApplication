@@ -1,0 +1,43 @@
+﻿@model CooperativeFuneralFundInc.Models.ClientManagement.Client
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Client</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Documents" class="control-label"></label>
+                <input asp-for="Documents" class="form-control" />
+                <span asp-validation-for="Documents" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Branding" class="control-label"></label>
+                <input asp-for="Branding" class="form-control" />
+                <span asp-validation-for="Branding" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClientContacts" class="control-label"></label>
+                <input asp-for="ClientContacts" class="form-control" />
+                <span asp-validation-for="ClientContacts" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

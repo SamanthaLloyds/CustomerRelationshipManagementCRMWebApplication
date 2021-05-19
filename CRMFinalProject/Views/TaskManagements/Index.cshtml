@@ -1,0 +1,97 @@
+﻿@model IEnumerable<CooperativeFuneralFundInc.Models.TasksManagement.TaskManagement>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Tasks</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-dark" border="1">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Owner)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RelatedTo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RelatedToName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RequestType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Priority)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Owner)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RelatedTo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RelatedToName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequestType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Priority)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedTime)
+            </td>
+            <td>
+
+                @if (User.IsInRole("Visitor"))
+                {
+                    <a class="btn btn-outline-warning" asp-action="Details" asp-route-id="@item.TaskManagementId">Details</a>
+                }
+                else
+                {
+                <a class="btn btn-outline-success" asp-action="Edit" asp-route-id="@item.TaskManagementId">Edit</a>
+                <a class="btn btn-outline-warning" asp-action="Details" asp-route-id="@item.TaskManagementId">Details</a>
+                <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.TaskManagementId">Delete</a>
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

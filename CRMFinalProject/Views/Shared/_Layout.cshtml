@@ -1,0 +1,99 @@
+﻿@{
+    // use current controller or area to determine if tab is active
+    var current = ViewContext.RouteData.Values["area"]?.ToString() ??
+        ViewContext.RouteData.Values["controller"]?.ToString();
+
+}
+@RenderSection("scripts", required: false)
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/popper.js/popper.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h2></h2>
+        </div>
+
+        <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Cooperative Funeral Fund Inc</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto topnav">
+                    <li class="nav-item @Nav.Active("Home", current)">
+                        <a class="nav-link btn btn-outline-secondary text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-secondary text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </li>
+                    @using CooperativeFuneralFundInc.Models.UserManagement
+
+                    @using Microsoft.AspNetCore.Identity
+
+                    @inject SignInManager<User> signInManager
+                    @if (signInManager.IsSignedIn(User))
+                    {
+                        // signed-in user - Log Out button and username
+                        <li class="nav-item">
+                            <form method="post" asp-action="LogOut" asp-controller="Account"
+                                  asp-area="">
+                                <input type="submit" value="Log Out"
+                                       class="btn btn-outline-light" />
+                                <span class="text-light">@User.Identity.Name</span>
+                            </form>
+                        </li>
+                    }
+                    else
+                    {
+                        var action = ViewContext.RouteData.Values["action"]?.ToString();
+
+                        // anonymous user - Register link and Log In button
+                        <li class="nav-item">
+                            <a asp-action="Register" asp-controller="Account"
+                               asp-area="" class="nav-link btn btn-outline-secondary text-white" type="button">
+                                <span class="fas fa-edit"></span>Register
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a method="get" asp-action="Login" asp-controller="Account"
+                               asp-area="" class="nav-link btn btn-outline-secondary text-white" type="button">Log In</a>
+                        </li>
+                    }
+
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-secondary text-white" asp-action="Index" asp-controller="Home" asp-area="Admin">
+                            Admin
+                        </a>
+                    </li>
+
+
+                </ul>
+            </div>
+
+
+
+        </nav>
+    </div>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - CooperativeFuneralFundInc - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+</body>

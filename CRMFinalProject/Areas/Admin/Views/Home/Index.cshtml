@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using CooperativeFuneralFundInc.Areas.Admin.Controllers
+@model HomeController
+
+<div class="text-center">
+    <h1 class="display-4">Welcome @User.Identity.Name</h1>
+</div>
+
+
+@Html.ActionLink("User Management", "Index", "User", null, new { @class = "btn btn-secondary" })
+
+
+
+
+@Html.ActionLink("Supply Request Management", "Index", "SupplyRequests", null, new { @class = "btn btn-secondary" })
+
+
+
+
+
+
+
+
+
