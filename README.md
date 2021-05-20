@@ -1,4 +1,4 @@
-# Customer Relationship Management(CRM) Web Application
+# Customer Relationship Management (CRM) Web Application
 
 This is a Customer Relationship Management (CRM) Web Application developed for a competition at Fairfield University. The application is primarily built using ASP.net
 
